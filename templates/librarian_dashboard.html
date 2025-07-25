@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block title %}Librarian Dashboard{% endblock %}
+{% block content %}
+<h2>Books</h2>
+<a href="/add_book" class="btn btn-primary mb-3">Add New Book</a>
+<table class="table table-bordered">
+    <tr>
+        <th>ID</th><th>Title</th><th>Author</th><th>Available</th><th>Actions</th>
+    </tr>
+    {% for book in books %}
+    <tr>
+        <td>{{ book[0] }}</td>
+        <td>{{ book[1] }}</td>
+        <td>{{ book[2] }}</td>
+        <td>{{ 'Yes' if book[3] else 'No' }}</td>
+        <td>
+            <a href="/edit_book/{{ book[0] }}" class="btn btn-warning btn-sm">Edit</a>
+            {% if book[3] %}
+            <form method="POST" action="/issue_book/{{ book[0] }}" class="d-inline">
+                <input type="number" name="user_id" placeholder="Member ID" required>
+                <button class="btn btn-success btn-sm">Issue</button>
+            </form>
+            {% endif %}
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+<h3>Return a Book</h3>
+<form method="POST" action="/return_book/1">
+    <label>Transaction ID:</label>
+    <input type="number" name="transaction_id" required>
+    <button class="btn btn-danger btn-sm">Return</button>
+</form>
+{% endblock %}

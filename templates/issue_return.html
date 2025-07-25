@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Issue & Return | Library System</title>
+</head>
+<body>
+    <h2>Issue a Book</h2>
+    <form method="POST" action="/issue_return">
+        <select name="user_id" required>
+            <option disabled selected>Select User</option>
+            {% for user in users %}
+                <option value="{{ user[0] }}">{{ user[1] }}</option>
+            {% endfor %}
+        </select>
+        <select name="book_id" required>
+            <option disabled selected>Select Book</option>
+            {% for book in books %}
+                <option value="{{ book[0] }}">{{ book[1] }}</option>
+            {% endfor %}
+        </select>
+        <button type="submit">Issue</button>
+    </form>
+
+    <h2>Return a Book</h2>
+    <form method="POST" action="/return">
+        <select name="transaction_id" required>
+            <option disabled selected>Select Issued Book</option>
+            {% for t in transactions %}
+                <option value="{{ t[0] }}">{{ t[1] }} - {{ t[2] }}</option>
+            {% endfor %}
+        </select>
+        <button type="submit">Return</button>
+    </form>
+
+    <h2>Issued Books</h2>
+    <table border="1">
+        <tr><th>ID</th><th>User</th><th>Book</th><th>Date Issued</th><th>Date Returned</th></tr>
+        {% for t in all_transactions %}
+        <tr>
+            <td>{{ t[0] }}</td>
+            <td>{{ t[1] }}</td>
+            <td>{{ t[2] }}</td>
+            <td>{{ t[3] }}</td>
+            <td>{{ t[4] or "--" }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

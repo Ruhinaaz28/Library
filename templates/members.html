@@ -1,0 +1,29 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Members | Library System</title>
+</head>
+<body>
+    <h2>Members</h2>
+    <table border="1">
+        <tr><th>ID</th><th>Name</th><th>Email</th><th>Actions</th></tr>
+        {% for member in members %}
+        <tr>
+            <td>{{ member[0] }}</td>
+            <td>{{ member[1] }}</td>
+            <td>{{ member[2] }}</td>
+            <td>
+                <a href="/edit_member/{{ member[0] }}">Edit</a> |
+                <a href="/delete_member/{{ member[0] }}">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    <h3>Add Member</h3>
+    <form method="POST" action="/members">
+        <input name="name" placeholder="Name" required>
+        <input name="email" type="email" placeholder="Email" required>
+        <button type="submit">Add Member</button>
+    </form>
+</body>
+</html>

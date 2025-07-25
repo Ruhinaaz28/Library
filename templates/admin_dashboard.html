@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block title %}Admin Dashboard{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="mb-4">Welcome, Admin!</h2>
+
+    <div class="row g-4">
+        <!-- Book Management -->
+        <div class="col-md-4">
+            <div class="card shadow-sm h-100">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Book Management</h5>
+                    <p class="card-text">Add, Edit, or Delete books in the library.</p>
+                    <a href="/admin/books" class="btn btn-primary w-100">Manage Books</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- User Management -->
+        <div class="col-md-4">
+            <div class="card shadow-sm h-100">
+                <div class="card-body text-center">
+                    <h5 class="card-title">User Management</h5>
+                    <p class="card-text">Manage Admins, Librarians, and Members.</p>
+                    <a href="/admin/users" class="btn btn-secondary w-100">Manage Users</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Transactions -->
+        <div class="col-md-4">
+            <div class="card shadow-sm h-100">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Transaction Tracking</h5>
+                    <p class="card-text">View issued and returned book records.</p>
+                    <a href="/admin/transactions" class="btn btn-success w-100">Track Transactions</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

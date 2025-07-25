@@ -1,0 +1,14 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Member</title>
+</head>
+<body>
+    <h2>Edit Member</h2>
+    <form method="POST">
+        <input name="name" value="{{ member[1] }}" required>
+        <input name="email" type="email" value="{{ member[2] }}" required>
+        <button type="submit">Update</button>
+    </form>
+</body>
+</html>

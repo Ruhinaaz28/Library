@@ -1,0 +1,15 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Book</title>
+</head>
+<body>
+    <h2>Edit Book</h2>
+    <form method="POST">
+        <input name="title" value="{{ book[1] }}" required>
+        <input name="author" value="{{ book[2] }}" required>
+        <input name="year" type="number" value="{{ book[3] }}" required>
+        <button type="submit">Update</button>
+    </form>
+</body>
+</html>
